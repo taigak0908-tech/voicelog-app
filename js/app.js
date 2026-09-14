@@ -24,21 +24,21 @@
   function urgent() { const now = new Date(`${String(state.data.today || '2100-01-01').slice(0,10)}T00:00:00`), groups = { '期限切れ': [], '今日期限': [], '承認待ち': [], 'あと2日': [], '停滞': [] }; arr(state.data.tasks).filter((t) => !['完了','却下'].includes(t.status)).forEach((t) => { const d = t.due ? new Date(`${String(t.due).slice(0,10)}T00:00:00`) : null; if (d && d < now) groups['期限切れ'].push(t); else if (d && d.getTime() === now.getTime()) groups['今日期限'].push(t); else if (t.status === '要確認') groups['承認待ち'].push(t); else if (d && (d-now)/86400000 <= 2) groups['あと2日'].push(t); else if (t.status === '未着手' && t.created_time && (now-new Date(t.created_time))/86400000 > 7) groups['停滞'].push(t); }); return groups; }
   function home() { const needs = Object.entries(urgent()).flatMap(([n, ts]) => ts.slice(0,2).map((t) => `<li><b>${esc(n)}</b> ${esc(t.title)}</li>`)); const days = arr(state.data.daily).slice().sort((a,b) => String(b.date).localeCompare(String(a.date)));
     setView(`<section class="page-title"><h1>録音の記録</h1><p>日ごとの会話と要点を確認できます</p></section><button class="search-row" data-action="search">⌕　要約・会話・人物を検索</button><section class="attention"><div class="section-line"><div><p class="eyebrow">今日の要対応</p><h2>${needs.length}件</h2></div><button data-page="tasks" class="text-button">タスクを見る</button></div>${needs.length ? `<ul>${needs.join('')}</ul>` : '<p class="calm">期限が近い未完了タスクはありません。</p>'}</section><h2 class="section-title">日別の録音</h2>${days.length ? days.map((d) => `<button class="day-card" data-day="${esc(d.date)}"><div class="day-card-head"><div><b>${label(d.date)}</b><span>${esc(d.tone || '')}</span></div><span>›</span></div><p>${esc(d.summary || '要約はありません')}</p><div class="chips"><span>${Math.round(Number(d.speech_min)||0)}分 発話</span><span>${Number(d.sessions)||0}会話</span><span>${Number(d.people_count)||0}人</span>${Number(d.risk_count) ? `<em>リスク ${Number(d.risk_count)}</em>` : ''}${Number(d.meeting_count) ? '<em class="meeting">会議あり</em>' : ''}</div></button>`).join('') : empty()}`); }
-  function tasks() { const data = arr(state.data.tasks).filter((t) => state.taskFilter === 'すべて' || (state.taskFilter === '未完了' ? !['完了','却下'].includes(t.status) : t.status === state.taskFilter)).sort((a,b) => String(a.due||'9999').localeCompare(String(b.due||'9999'))); setView(`<section class="page-title"><h1>タスク</h1><p>変更はNotionで行います</p></section><button class="filter-button" data-action="filter">${esc(state.taskFilter)} <span>⌄</span></button>${data.length ? data.map((t) => `<article class="task-card"><div class="task-head"><div><h2>${esc(t.title || '名称未設定')}</h2><p>${esc(t.genre || '')}${t.person ? ` ・ ${esc(t.person)}` : ''}</p></div><span class="status">${esc(t.status || '未設定')}</span></div><p class="due">${t.due ? `期限 ${fmt(t.due)}` : '期限未設定'}</p>${t.quote ? `<blockquote>${esc(t.quote)}</blockquote>` : ''}${link(t.url)}</article>`).join('') : empty('該当するタスクはありません')}`); }
+  function tasks() { const data = arr(state.data.tasks).filter((t) => state.taskFilter === 'すべて' || (state.taskFilter === '未完了' ? !['完了','却下'].includes(t.status) : t.status === state.taskFilter)).sort((a,b) => String(a.due||'9999').localeCompare(String(b.due||'9999'))); setView(`<section class="page-title"><h1>タスク</h1><p>変更はNotionで行います</p></section><button class="filter-button" data-action="filter">${esc(state.taskFilter)} <span>⌄</span></button>${data.length ? data.map((t) => `<article class="task-card"><div class="task-head"><div><h2>${esc(t.title || '名称未設定')}</h2><p>${esc(t.genre || '')}${t.person ? ` ・ ${esc(t.person)}` : ''}</p></div><span class="status ${statusClass(t.status)}">${esc(t.status || '未設定')}</span></div><p class="due">${t.due ? `期限 ${fmt(t.due)}` : '期限未設定'}</p>${t.quote ? `<blockquote>${esc(t.quote)}</blockquote>` : ''}${link(t.url)}</article>`).join('') : empty('該当するタスクはありません')}`); }
   function personDays(p) { const names = new Set([p.name, p.id]); return Object.entries(state.data.daily_detail || {}).filter(([,d]) => arr(d.people).some((x) => names.has(x.name_guess) || names.has(speaker(x.speaker_label)) || x.speaker_label === p.id)).sort(([a],[b]) => b.localeCompare(a)); }
   function people() { const list = arr(state.data.people).slice().sort((a,b) => (/^(未設定|不明|話者)/.test(b.name||'') ? 1 : 0) - (/^(未設定|不明|話者)/.test(a.name||'') ? 1 : 0) || Number(b.count||0)-Number(a.count||0)); setView(`<section class="page-title"><h1>人物</h1><p>会話に登場した人をたどる</p></section>${list.length ? list.map((p) => `<button class="person-card" data-person="${esc(p.id)}"><div><h2>${esc(p.name||'名前未設定')}</h2><p>${esc([p.org,p.relation].filter(Boolean).join(' ・ '))}</p></div><div class="person-meta"><b>${Number(p.count)||0}回</b><span>${fmt(p.last_seen)}</span></div></button>`).join('') : empty()}`); }
   // 一覧は「未設定」を先頭に並べ替えて表示するので、並び順の番号ではなくIDで引く
   function personDetail(id) { const p = arr(state.data.people).find((x) => x.id === id); if (!p) return; const days = personDays(p); setView(`<button class="back" data-back="people">‹ 人物へ戻る</button><section class="page-title"><h1>${esc(p.name||'名前未設定')}</h1><p>${esc([p.org,p.relation].filter(Boolean).join(' ・ '))}</p></section>${p.memo ? `<details class="memo"><summary>メモ</summary><p>${esc(p.memo)}</p></details>` : ''}<h2 class="section-title">登場した日</h2>${days.length ? days.map(([date,d]) => `<button class="day-card compact" data-day="${esc(date)}"><b>${label(date)}</b><p>${esc(d.summary||'')}</p></button>`).join('') : empty('登場日の詳細はありません')}${link(p.url)}`); }
   function more() { setView(`<section class="page-title"><h1>その他</h1><p>案件とナレッジ</p></section><button class="more-row" data-action="threads">案件 <span>${arr(state.data.threads).length}件　›</span></button><button class="more-row" data-action="knowledge">ナレッジ <span>${arr(state.data.knowledge).length}件　›</span></button><button class="more-row" data-action="settings">設定 <span>›</span></button>`); }
-  function threads() { const list = arr(state.data.threads); setView(`<button class="back" data-back="more">‹ その他へ戻る</button><section class="page-title"><h1>案件</h1></section>${list.length ? list.map((t) => `<article class="task-card"><div class="task-head"><h2>${esc(t.name)}</h2><span class="status">${esc(t.status)}</span></div><p>${esc(t.next_action||'')}</p><p class="muted">最終言及 ${fmt(t.last_mention)}</p>${link(t.url)}</article>`).join('') : empty()}`); }
+  function threads() { const list = arr(state.data.threads); setView(`<button class="back" data-back="more">‹ その他へ戻る</button><section class="page-title"><h1>案件</h1></section>${list.length ? list.map((t) => `<article class="task-card"><div class="task-head"><h2>${esc(t.name)}</h2><span class="status ${statusClass(t.status)}">${esc(t.status)}</span></div><p>${esc(t.next_action||'')}</p><p class="muted">最終言及 ${fmt(t.last_mention)}</p>${link(t.url)}</article>`).join('') : empty()}`); }
   function knowledge() { const list = arr(state.data.knowledge); setView(`<button class="back" data-back="more">‹ その他へ戻る</button><section class="page-title"><h1>ナレッジ</h1></section>${list.length ? list.map((k,i) => `<button class="more-row" data-knowledge="${i}">${esc(k.name)} <span>${fmt(k.updated)}　›</span></button>`).join('') : empty()}`); }
-  function knowledgeDetail(i) { const k = arr(state.data.knowledge)[i]; if (k) setView(`<button class="back" data-back="knowledge">‹ ナレッジへ戻る</button><section class="page-title"><h1>${esc(k.name)}</h1><p>${fmt(k.updated)}</p></section><article class="read-card">${esc(k.text||'').replace(/\n/g,'<br>')}</article>`); }
+  function knowledgeDetail(i) { const k = arr(state.data.knowledge)[i]; if (k) setView(`<button class="back" data-back="knowledge">‹ ナレッジへ戻る</button><section class="page-title"><h1>${esc(k.name)}</h1><p>${fmt(k.updated)}</p></section><article class="read-card markdown">${markdown(k.text)}</article>`); }
 
   const bullets = (v) => arr(v).length ? `<ul>${arr(v).map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : '';
   const section = (title, html) => html ? `<section class="detail-section"><h2>${title}</h2>${html}</section>` : '';
-  function summary(d) { const risks = arr(d.risks).map((r) => `<article class="risk"><b>${esc(r.severity)} · ${esc(r.category)}</b><p>${esc(r.why)}</p>${r.action ? `<p>対応: ${esc(r.action)}</p>` : ''}${r.quote ? `<blockquote>${esc(r.quote)}</blockquote>` : ''}</article>`).join(''); const meetings = arr(d.meetings).map((m) => `<article class="meeting-card"><b>${esc(m.title)}</b><p>${esc(m.time)} · ${esc(m.kind)}</p>${bullets(arr(m.agenda).map((a) => `${a.topic||''}：${a.conclusion||a.discussion||''}`))}</article>`).join(''); const questions = arr(d.questions).map((q) => `<article class="meeting-card"><b>${esc(q.question)}</b><p>${esc(q.why)}</p>${arr(d.research).filter((r) => r.question === q.question).map((r) => `<p>${esc(r.answer)}</p>`).join('')}</article>`).join(''); return `<article class="summary-lead">${esc(d.summary||'要約はありません')}${link(d.notion_url)}</article>${section('決定事項',bullets(d.decisions))}${section('気づき',bullets(d.insights))}${section('ハイライト',bullets(d.highlights))}${section('リスク',risks)}${section('議事録',meetings)}${section('疑問と調べた答え',questions)}`; }
+  function summary(d) { const risks = arr(d.risks).map((r) => `<article class="risk ${sevClass(r.severity)}"><b>${esc(r.severity)} · ${esc(r.category)}</b><p>${esc(r.why)}</p>${r.action ? `<p>対応: ${esc(r.action)}</p>` : ''}${r.quote ? `<blockquote>${esc(r.quote)}</blockquote>` : ''}</article>`).join(''); const meetings = arr(d.meetings).map((m) => `<article class="meeting-card"><b>${esc(m.title)}</b><p>${esc(m.time)} · ${esc(m.kind)}</p>${bullets(arr(m.agenda).map((a) => `${a.topic||''}：${a.conclusion||a.discussion||''}`))}</article>`).join(''); const questions = arr(d.questions).map((q) => `<article class="meeting-card"><b>${esc(q.question)}</b><p>${esc(q.why)}</p>${arr(d.research).filter((r) => r.question === q.question).map((r) => `<p>${esc(r.answer)}</p>`).join('')}</article>`).join(''); return `<article class="summary-lead">${esc(d.summary||'要約はありません')}${link(d.notion_url)}</article>${section('決定事項',bullets(d.decisions))}${section('気づき',bullets(d.insights))}${section('ハイライト',bullets(d.highlights))}${section('リスク',risks)}${section('議事録',meetings)}${section('疑問と調べた答え',questions)}`; }
   function sessions(d) { return arr(d.sessions).length ? `<div class="timeline">${arr(d.sessions).map((s) => `<button class="session-card" data-session="${esc(String(s.id))}"><span>${esc(s.time)}</span><div><b>${esc(s.title||'会話')}</b><p>${arr(s.participants).map((x) => esc(speaker(x))).join(' ・ ')}</p><p>${esc(s.summary||'')}</p>${bullets(s.points)}</div></button>`).join('')}</div>` : empty('会話記録はありません'); }
-  function transcripts(d) { const rows = arr(state.data.transcripts?.[state.day]); if (!rows.length) return empty('この日の文字起こしはありません'); const titles = new Map(arr(d.sessions).map((s) => [String(s.id),s.title])); let previous = ''; return rows.map((r) => { const id = String(r.session), title = id !== previous ? `<h2 id="session-${esc(id)}" class="transcript-session">${esc(titles.get(id)||`会話 ${id}`)}</h2>` : ''; previous=id; return `${title}<article class="utterance"><span class="avatar">${esc(avatarText(speaker(r.speaker)))}</span><div><b>${esc(speaker(r.speaker))}</b><time>${esc(r.start||'')}</time><p>${esc(r.text)}</p></div></article>`; }).join(''); }
+  function transcripts(d) { const rows = arr(state.data.transcripts?.[state.day]); if (!rows.length) return empty('この日の文字起こしはありません'); const titles = new Map(arr(d.sessions).map((s) => [String(s.id),s.title])); let previous = ''; return rows.map((r) => { const id = String(r.session), title = id !== previous ? `<h2 id="session-${esc(id)}" class="transcript-session">${esc(titles.get(id)||`会話 ${id}`)}</h2>` : ''; previous=id; return `${title}<article class="utterance"><span class="avatar" style="--hue:${speakerHue(r.speaker)}">${esc(avatarText(speaker(r.speaker)))}</span><div><b>${esc(speaker(r.speaker))}</b><time>${esc(r.start||'')}</time><p>${esc(r.text)}</p></div></article>`; }).join(''); }
   // 文字起こしの丸アイコンの文字。名前未設定の人は全員「未」になって見分けがつかないので、声紋IDの番号を出す
   function avatarText(name) {
     const text = String(name || '');
@@ -46,6 +46,42 @@
     if (unset) return unset[1].slice(-3);
     const label = text.match(/^P0*(\d+)$/);
     return label ? label[1].slice(-3) : text.slice(0, 1);
+  }
+
+  // 状態・重大度を色分けするためのクラス名（日本語の値をそのままクラスにしない）
+  function statusClass(status) {
+    return { '未着手': 'st-todo', '要確認': 'st-review', '進行中': 'st-doing', '待ち': 'st-review',
+             '保留': 'st-hold', '完了': 'st-done', '却下': 'st-rejected', '流れた': 'st-rejected' }[status] || 'st-hold';
+  }
+  function sevClass(severity) {
+    return { '高': 'sev-high', '中': 'sev-mid', '低': 'sev-low' }[severity] || 'sev-low';
+  }
+
+  // 話者ごとに色を固定する（同じ声紋IDなら毎回同じ色）
+  function speakerHue(label) {
+    let h = 0;
+    for (const ch of String(label || '')) h = (h * 31 + ch.codePointAt(0)) % 360;
+    return h;
+  }
+
+  // ナレッジ用の最小限のMarkdown表示（見出し・箇条書き・引用・太字）。先にエスケープしてから整形する
+  function markdown(text) {
+    const inline = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    let html = '', list = false, quote = false;
+    const close = () => {
+      if (list) { html += '</ul>'; list = false; }
+      if (quote) { html += '</blockquote>'; quote = false; }
+    };
+    for (const line of String(text || '').split('\n')) {
+      const h = line.match(/^(#{1,3})\s+(.*)$/), li = line.match(/^\s*[-*]\s+(.*)$/), q = line.match(/^>\s?(.*)$/);
+      if (h) { close(); html += `<h${h[1].length + 1}>${inline(h[2])}</h${h[1].length + 1}>`; }
+      else if (li) { if (quote) close(); if (!list) { html += '<ul>'; list = true; } html += `<li>${inline(li[1])}</li>`; }
+      else if (q) { if (list) close(); if (!quote) { html += '<blockquote>'; quote = true; } html += `${inline(q[1])}<br>`; }
+      else if (!line.trim()) close();
+      else { close(); html += `<p>${inline(line)}</p>`; }
+    }
+    close();
+    return html;
   }
 
   // mermaid の図形記法（root((…)), (…), […], {{…}}, ))…(( など）を外して見出しの文字だけにする

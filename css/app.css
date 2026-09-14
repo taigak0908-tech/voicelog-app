@@ -1,1 +1,817 @@
-:root{--bg:#f4f6f4;--card:#fff;--ink:#1b2925;--muted:#697671;--line:#dce4df;--soft:#edf3ef;--accent:#2d7961;--accent-soft:#dcefe6;--danger:#b7473f;--shadow:0 4px 18px #19352b0d;--sans:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic UI",sans-serif}@media(prefers-color-scheme:dark){:root{--bg:#121a18;--card:#1b2622;--ink:#eef5f0;--muted:#a1afa8;--line:#314039;--soft:#24332d;--accent:#78c9a6;--accent-soft:#203d32;--danger:#f18b82;--shadow:none}}*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 var(--sans)}button,input{font:inherit}.hidden{display:none!important}.app{max-width:600px;margin:auto;padding:calc(16px + env(safe-area-inset-top)) 14px calc(90px + env(safe-area-inset-bottom))}.topbar{display:flex;align-items:flex-start;justify-content:space-between;margin:0 2px 20px}.brand{font-weight:800;letter-spacing:.01em}.record-dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#e6574f;box-shadow:0 0 0 4px #e6574f25;margin-right:7px}.updated,.page-title p,.muted,.person-card p,.task-head p,.meeting-card p{color:var(--muted);font-size:12px;margin:3px 0}.icon-button{width:44px;height:44px;border:1px solid var(--line);border-radius:13px;background:var(--card);color:var(--ink);font-size:25px}.page-title{margin:0 2px 14px}.page-title h1{font-size:26px;line-height:1.2;margin:0}.search-row,.filter-button{width:100%;min-height:48px;text-align:left;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:14px;padding:0 14px;margin-bottom:12px}.filter-button{display:flex;justify-content:space-between;color:var(--ink);font-weight:700}.attention,.task-card,.read-card,.memo{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:15px;margin-bottom:16px;box-shadow:var(--shadow)}.section-line,.day-card-head,.task-head,.person-card,.more-row{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.attention h2{margin:0;font-size:28px}.eyebrow{font-size:11px;letter-spacing:.1em;font-weight:800;color:var(--accent);margin:0}.attention ul{padding-left:17px;margin:10px 0 0}.attention li{margin:6px 0;font-size:13px}.attention li b{color:var(--danger);font-size:11px;margin-right:4px}.calm{color:var(--muted);font-size:13px;margin:10px 0 0}.text-button,.back{border:0;background:transparent;color:var(--accent);font-weight:750;min-height:44px;padding:0}.section-title{font-size:16px;margin:22px 2px 9px}.day-card,.person-card,.more-row,.session-card,.result{width:100%;text-align:left;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:16px;padding:14px;margin-bottom:10px;box-shadow:var(--shadow)}.day-card-head b,.person-card h2,.task-card h2{font-size:16px;line-height:1.35;margin:0}.day-card-head span{display:block;color:var(--muted);font-size:12px;margin-top:2px}.day-card>p{font-size:13px;margin:9px 0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.chips,.stat-row{display:flex;gap:6px;flex-wrap:wrap}.chips span,.stat-row span,.status{font-size:11px;background:var(--soft);color:var(--muted);padding:4px 7px;border-radius:8px}.chips em{font-style:normal;font-size:11px;background:#f6dedb;color:var(--danger);padding:4px 7px;border-radius:8px}.chips .meeting{background:var(--accent-soft);color:var(--accent)}.task-card{margin-bottom:10px}.due{color:var(--accent);font-size:12px;margin:9px 0}blockquote{border-left:3px solid var(--line);margin:10px 0;padding-left:10px;color:var(--muted);font-size:13px}.notion-link{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;color:var(--accent);border:1px solid var(--accent);border-radius:11px;text-decoration:none;font-size:13px;font-weight:750;margin-top:7px}.person-card{align-items:center;min-height:70px}.person-meta{text-align:right}.person-meta b,.person-meta span{display:block;font-size:12px}.person-meta span{color:var(--muted);font-size:10px}.more-row{align-items:center;min-height:58px;font-weight:750}.more-row span{color:var(--muted);font-size:12px;font-weight:400}.read-card{white-space:normal;line-height:1.8}.memo summary{min-height:30px;font-weight:750}.memo p{white-space:pre-line;font-size:13px}.stat-row{margin:-5px 0 15px}.segments{display:flex;overflow-x:auto;border-bottom:1px solid var(--line);margin-bottom:16px}.segments button{flex:1;white-space:nowrap;min-height:46px;border:0;border-bottom:2px solid transparent;background:transparent;color:var(--muted);font-weight:750;padding:0 10px}.segments button.active{color:var(--accent);border-bottom-color:var(--accent)}.summary-lead{padding:16px;background:var(--accent-soft);border-radius:16px;line-height:1.75}.detail-section{margin:24px 0}.detail-section h2{font-size:17px;margin:0 0 10px}.detail-section ul,.meeting-card ul{padding-left:19px;margin:0}.detail-section li{margin:7px 0}.risk,.meeting-card{border:1px solid var(--line);border-radius:13px;padding:12px;margin:8px 0;background:var(--card)}.risk b{color:var(--danger)}.risk p{font-size:13px;margin:6px 0}.timeline{border-left:2px solid var(--accent-soft);padding-left:12px}.session-card{position:relative;margin-bottom:10px}.session-card:before{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:var(--accent);left:-19px;top:21px}.session-card>span{font-size:11px;color:var(--accent);font-weight:800}.session-card p{margin:4px 0;color:var(--muted);font-size:12px}.session-card ul{padding-left:18px;margin:5px 0;font-size:12px}.transcript-session{font-size:15px;margin:22px 0 8px}.utterance{display:flex;gap:9px;padding:10px 0;border-bottom:1px solid var(--line)}.avatar{flex:0 0 30px;height:30px;display:grid;place-items:center;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:800}.utterance b{font-size:12px}.utterance time{margin-left:7px;color:var(--muted);font-size:10px}.utterance p{margin:3px 0;font-size:13px;white-space:pre-wrap}.mindmap-tree{border:1px solid var(--line);border-radius:14px;padding:10px}.mind-node{padding:7px 0 7px calc(var(--depth)*14px);border-bottom:1px solid var(--line);font-size:13px}.mind-node:last-child{border:0}.mind-node span{color:var(--accent);margin-right:7px}.empty{text-align:center;color:var(--muted);padding:30px 10px}.bottom-nav{position:fixed;z-index:10;bottom:0;left:50%;transform:translateX(-50%);display:flex;width:min(100%,600px);padding:7px 5px calc(7px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);border-top:1px solid var(--line)}.bottom-nav button{flex:1;min-height:50px;border:0;border-radius:12px;background:transparent;color:var(--muted);font-size:10px;font-weight:700}.bottom-nav span{display:block;font-size:18px;line-height:20px}.bottom-nav button.active{background:var(--accent-soft);color:var(--accent)}.lock{position:fixed;inset:0;display:grid;place-items:center;padding:18px;background:var(--bg)}.lock-card{width:min(100%,355px);padding:26px 22px;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:20px}.lock-card h1{font-size:21px;margin:8px 0}.lock-card p{font-size:13px;color:var(--muted)}.kicker{font-size:10px!important;letter-spacing:.12em;font-weight:800}.lock-card input,.primary{width:100%;height:48px;border-radius:12px}.lock-card input{border:1px solid var(--line);background:var(--soft);padding:0 13px;color:var(--ink);margin:10px 0}.primary{border:0;background:var(--accent);color:white;font-weight:800}.error{color:var(--danger)!important;min-height:18px}.sheet-back{position:fixed;z-index:20;inset:0;background:#0008;opacity:0;pointer-events:none;transition:.2s}.sheet-back.show{opacity:1;pointer-events:auto}.sheet{position:fixed;z-index:21;bottom:0;left:50%;width:min(100%,600px);max-height:75vh;overflow:auto;transform:translate(-50%,110%);transition:.2s;padding:19px 14px calc(20px + env(safe-area-inset-bottom));background:var(--card);border-radius:19px 19px 0 0;border:1px solid var(--line)}.sheet.show{transform:translate(-50%,0)}.sheet h2{font-size:17px;margin:0 0 10px}.sheet input{width:100%;height:48px;border:1px solid var(--line);border-radius:12px;padding:0 12px;background:var(--soft);color:var(--ink);margin-bottom:10px}.sheet-choice,.danger{display:block;width:100%;min-height:48px;border:0;border-radius:10px;text-align:left;padding:0 12px;background:transparent;color:var(--ink)}.sheet-choice.selected{background:var(--accent-soft);color:var(--accent);font-weight:800}.danger{color:var(--danger);border:1px solid var(--danger);margin-top:14px}.result{border-radius:0;box-shadow:none;margin:0;border-width:0 0 1px}.result b,.result span{display:block}.result span{font-size:12px;color:var(--muted);margin-top:3px}.sr-only{position:absolute;width:1px;height:1px;clip:rect(0,0,0,0);overflow:hidden}@media(max-width:375px){.app{padding-left:10px;padding-right:10px}.day-card,.task-card,.person-card{padding:12px}.bottom-nav button{font-size:9px}.page-title h1{font-size:24px}}
+/* AIボイスレコーダー
+   奥行きのある見た目（面の重なり・光の当たり方・押し込み）で、
+   どこが押せてどこが読む場所かを一目で分かるようにする。
+   作業の合間に片手で見る前提なので、文字は大きめ・コントラスト高め。 */
+
+/* ---------------------------------------------------------------------
+   配色と奥行きの基準（ライト）
+   --------------------------------------------------------------------- */
+:root {
+  --bg-top: #eef3f1;
+  --bg-bottom: #dfe8e4;
+  --card: #ffffff;
+  --card-2: #f6faf8;           /* 面のグラデーションの下側 */
+  --sunken: #e4ece8;           /* くぼんだ面（セグメントの溝など） */
+  --ink: #13211d;
+  --muted: #56655f;
+  --line: rgba(19, 45, 36, 0.10);
+  --highlight: rgba(255, 255, 255, 0.95);  /* 面の上端に当たる光 */
+
+  --accent: #1f8a67;
+  --accent-2: #26b184;
+  --accent-ink: #ffffff;
+  --accent-soft: #dcf1e8;
+  --danger: #c8443b;
+  --warn: #c98a12;
+  --info: #2f73c9;
+
+  /* 影は「広くて淡い環境光」＋「近くて濃い接地影」の2層で奥行きを出す */
+  --shadow-1: 0 1px 2px rgba(16, 40, 32, 0.08), 0 4px 10px rgba(16, 40, 32, 0.06);
+  --shadow-2: 0 2px 4px rgba(16, 40, 32, 0.08), 0 10px 24px rgba(16, 40, 32, 0.10);
+  --shadow-3: 0 6px 12px rgba(16, 40, 32, 0.10), 0 22px 48px rgba(16, 40, 32, 0.16);
+  --shadow-press: 0 1px 2px rgba(16, 40, 32, 0.10);
+  --inset: inset 0 2px 5px rgba(16, 40, 32, 0.10), inset 0 -1px 0 rgba(255, 255, 255, 0.7);
+
+  --radius: 20px;
+  --radius-sm: 14px;
+  --sans: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Hiragino Kaku Gothic ProN",
+          "Yu Gothic UI", "Noto Sans JP", sans-serif;
+  color-scheme: light;
+}
+
+/* ---------------------------------------------------------------------
+   ダーク
+   --------------------------------------------------------------------- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-top: #16211e;
+    --bg-bottom: #0b1210;
+    --card: #1e2b27;
+    --card-2: #18231f;
+    --sunken: #101916;
+    --ink: #eef6f2;
+    --muted: #a7b7b0;
+    --line: rgba(255, 255, 255, 0.07);
+    --highlight: rgba(255, 255, 255, 0.07);
+
+    --accent: #3fc696;
+    --accent-2: #2a9f78;
+    --accent-ink: #062117;
+    --accent-soft: #1b3a2f;
+    --danger: #ff8a80;
+    --warn: #f0b64a;
+    --info: #7fb3ff;
+
+    --shadow-1: 0 1px 2px rgba(0, 0, 0, 0.40), 0 4px 12px rgba(0, 0, 0, 0.30);
+    --shadow-2: 0 2px 4px rgba(0, 0, 0, 0.45), 0 12px 28px rgba(0, 0, 0, 0.40);
+    --shadow-3: 0 8px 16px rgba(0, 0, 0, 0.50), 0 26px 56px rgba(0, 0, 0, 0.55);
+    --shadow-press: 0 1px 2px rgba(0, 0, 0, 0.50);
+    --inset: inset 0 2px 6px rgba(0, 0, 0, 0.55), inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+    color-scheme: dark;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   土台
+   --------------------------------------------------------------------- */
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--ink);
+  font: 16px/1.65 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* 上から光が当たっているような背景。スクロールしても固定で、奥の面として働く。
+   background-attachment: fixed はスクロールのたびに全面を描き直して重いので、
+   固定した別の層に描く */
+body { background: var(--bg-bottom); }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(120% 60% at 50% -10%, var(--accent-soft) 0%, transparent 60%),
+    linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+}
+
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+.hidden { display: none !important; }
+.sr-only { position: absolute; width: 1px; height: 1px; clip: rect(0 0 0 0); overflow: hidden; }
+
+.app {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: calc(16px + env(safe-area-inset-top)) 16px calc(112px + env(safe-area-inset-bottom));
+}
+
+/* 押せる面の共通の手触り: 押すと沈む */
+.day-card, .person-card, .more-row, .session-card, .result,
+.search-row, .filter-button, .icon-button, .notion-link, .primary,
+.sheet-choice, .danger, .bottom-nav button, .segments button, .text-button {
+  transition: transform .14s ease, box-shadow .14s ease, background-color .14s ease;
+}
+.day-card:active, .person-card:active, .more-row:active, .session-card:active,
+.search-row:active, .filter-button:active, .icon-button:active, .notion-link:active,
+.primary:active, .danger:active {
+  transform: translateY(2px) scale(0.985);
+  box-shadow: var(--shadow-press);
+}
+
+/* ---------------------------------------------------------------------
+   上部
+   --------------------------------------------------------------------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 2px 22px;
+}
+.brand { font-weight: 800; font-size: 17px; letter-spacing: .01em; }
+.updated { color: var(--muted); font-size: 13px; margin: 2px 0 0; }
+
+/* 録音中ランプ。光る玉として立体的に */
+.record-dot {
+  display: inline-block;
+  width: 11px; height: 11px;
+  margin-right: 8px;
+  border-radius: 50%;
+  vertical-align: 1px;
+  background: radial-gradient(circle at 35% 30%, #ff9a92, #e0453c 55%, #9e231c);
+  box-shadow: 0 0 0 4px rgba(224, 69, 60, 0.16), 0 0 12px rgba(224, 69, 60, 0.55);
+  animation: pulse 2.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(224, 69, 60, 0.16), 0 0 10px rgba(224, 69, 60, 0.45); }
+  50%      { box-shadow: 0 0 0 7px rgba(224, 69, 60, 0.08), 0 0 18px rgba(224, 69, 60, 0.70); }
+}
+
+.icon-button {
+  width: 48px; height: 48px;
+  display: grid; place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  font-size: 24px;
+  background: linear-gradient(180deg, var(--card), var(--card-2));
+  box-shadow: var(--shadow-2), inset 0 1px 0 var(--highlight);
+}
+
+/* ---------------------------------------------------------------------
+   見出し
+   --------------------------------------------------------------------- */
+.page-title { margin: 0 2px 16px; }
+.page-title h1 { font-size: 28px; line-height: 1.25; margin: 0; font-weight: 800; letter-spacing: -.01em; }
+.page-title p, .muted { color: var(--muted); font-size: 14px; margin: 4px 0; }
+
+.section-title {
+  font-size: 18px;
+  font-weight: 800;
+  margin: 28px 4px 12px;
+}
+
+.eyebrow {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  color: var(--accent);
+}
+
+.back, .text-button {
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 15px;
+  min-height: 44px;
+  padding: 0 4px;
+  margin-bottom: 4px;
+}
+
+/* ---------------------------------------------------------------------
+   面（カード）の共通
+   --------------------------------------------------------------------- */
+.attention, .task-card, .read-card, .memo, .day-card, .person-card, .more-row,
+.session-card, .risk, .meeting-card, .mindmap-tree, .summary-lead {
+  position: relative;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--card) 0%, var(--card-2) 100%);
+  box-shadow: var(--shadow-2), inset 0 1px 0 var(--highlight);
+}
+
+/* 検索・絞り込み: 少しくぼんだ入力欄に見せる */
+.search-row, .filter-button {
+  width: 100%;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 18px;
+  padding: 0 18px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--sunken);
+  box-shadow: var(--inset);
+  color: var(--muted);
+  font-size: 15px;
+  text-align: left;
+}
+.filter-button { color: var(--ink); font-weight: 800; }
+
+/* ---------------------------------------------------------------------
+   今日の要対応（いちばん手前に浮いている面）
+   --------------------------------------------------------------------- */
+.attention {
+  padding: 20px;
+  margin-bottom: 8px;
+  overflow: hidden;
+  background:
+    radial-gradient(90% 120% at 100% 0%, var(--accent-soft) 0%, transparent 55%),
+    linear-gradient(180deg, var(--card), var(--card-2));
+  box-shadow: var(--shadow-3), inset 0 1px 0 var(--highlight);
+}
+.attention::before {  /* 左の縁に光る帯 */
+  content: "";
+  position: absolute;
+  left: 0; top: 16px; bottom: 16px;
+  width: 4px;
+  border-radius: 0 4px 4px 0;
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  box-shadow: 0 0 12px var(--accent);
+}
+.section-line, .day-card-head, .task-head, .person-card, .more-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+.attention h2 {
+  margin: 2px 0 0;
+  font-size: 40px;
+  line-height: 1.1;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  text-shadow: 0 2px 0 var(--highlight);
+}
+.attention ul { list-style: none; padding: 0; margin: 14px 0 0; }
+.attention li {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 10px 12px;
+  margin: 8px 0 0;
+  border-radius: 12px;
+  background: var(--sunken);
+  box-shadow: var(--inset);
+  font-size: 15px;
+  line-height: 1.45;
+}
+.attention li b {
+  flex: none;
+  font-size: 12px;
+  color: #fff;
+  background: linear-gradient(180deg, #e25a50, var(--danger));
+  padding: 2px 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(200, 68, 59, 0.35);
+}
+.calm { color: var(--muted); font-size: 14px; margin: 12px 0 0; }
+.attention .text-button { margin: 0; }
+
+/* ---------------------------------------------------------------------
+   日別の録音カード
+   --------------------------------------------------------------------- */
+.day-card, .person-card, .more-row, .session-card, .result {
+  width: 100%;
+  text-align: left;
+  color: var(--ink);
+}
+.day-card {
+  display: block;
+  padding: 18px;
+  margin-bottom: 14px;
+}
+.day-card-head b { font-size: 18px; line-height: 1.35; font-weight: 800; }
+.day-card-head span { display: block; color: var(--muted); font-size: 13px; margin-top: 2px; }
+.day-card-head > span {  /* 右端の › を丸いボタン風に */
+  display: grid; place-items: center;
+  flex: none;
+  width: 32px; height: 32px;
+  margin: 0;
+  border-radius: 50%;
+  font-size: 18px;
+  color: var(--accent);
+  background: var(--sunken);
+  box-shadow: var(--inset);
+}
+.day-card > p {
+  font-size: 15px;
+  margin: 10px 0 12px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.day-card.compact { padding: 14px 16px; }
+.day-card.compact b { font-size: 16px; }
+.day-card.compact p { font-size: 14px; color: var(--muted); margin: 6px 0 0;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* 小さな数値の札。ぷっくりした立体 */
+.chips, .stat-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.chips span, .chips em, .stat-row span {
+  font-style: normal;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: var(--muted);
+  background: linear-gradient(180deg, var(--card), var(--sunken));
+  border: 1px solid var(--line);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), inset 0 1px 0 var(--highlight);
+}
+.chips em {
+  color: #fff;
+  border-color: transparent;
+  background: linear-gradient(180deg, #e25a50, var(--danger));
+  box-shadow: 0 2px 6px rgba(200, 68, 59, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.chips .meeting {
+  color: var(--accent-ink);
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  box-shadow: 0 2px 6px rgba(31, 138, 103, 0.30), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+.stat-row { margin: -4px 0 18px; }
+.stat-row span { font-size: 14px; color: var(--ink); }
+
+/* ---------------------------------------------------------------------
+   1日の詳細: セグメント切り替え（溝の中で、選んだものだけが浮く）
+   --------------------------------------------------------------------- */
+.segments {
+  position: sticky;
+  top: calc(8px + env(safe-area-inset-top));
+  z-index: 5;
+  display: flex;
+  gap: 4px;
+  padding: 5px;
+  margin: 0 0 18px;
+  border-radius: 18px;
+  /* 貼り付いたとき下を流れる本文が透けないよう、溝の色の下に不透明な下地を敷く */
+  background: linear-gradient(var(--sunken), var(--sunken)), var(--bg-top);
+  box-shadow: var(--inset), 0 6px 18px rgba(0, 0, 0, 0.08);
+  overflow-x: auto;
+}
+.segments button {
+  flex: 1;
+  min-height: 46px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.segments button.active {
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--card), var(--card-2));
+  box-shadow: var(--shadow-1), inset 0 1px 0 var(--highlight);
+}
+
+.summary-lead {
+  padding: 18px;
+  font-size: 16px;
+  line-height: 1.85;
+  background:
+    linear-gradient(180deg, var(--accent-soft), transparent 70%),
+    linear-gradient(180deg, var(--card), var(--card-2));
+}
+.detail-section { margin: 26px 0; }
+.detail-section h2 { font-size: 18px; font-weight: 800; margin: 0 4px 10px; }
+.detail-section ul, .meeting-card ul, .session-card ul { padding-left: 20px; margin: 0; }
+.detail-section li { margin: 8px 0; font-size: 15px; }
+
+/* リスク: 重大度の色を左の帯と札で示す */
+.risk, .meeting-card {
+  padding: 14px 16px 14px 18px;
+  margin: 10px 0;
+  overflow: hidden;
+}
+.risk::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 5px;
+  background: var(--sev, var(--muted));
+}
+.risk b { font-size: 14px; color: var(--sev, var(--ink)); }
+.risk p, .meeting-card p { font-size: 14px; margin: 6px 0; }
+.risk.sev-high { --sev: var(--danger); }
+.risk.sev-mid  { --sev: var(--warn); }
+.risk.sev-low  { --sev: var(--muted); }
+.meeting-card b { font-size: 15px; }
+
+blockquote {
+  margin: 10px 0;
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--sunken);
+  box-shadow: var(--inset);
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ---------------------------------------------------------------------
+   会話のタイムライン（光る玉が線でつながる）
+   --------------------------------------------------------------------- */
+.timeline {
+  position: relative;
+  padding-left: 22px;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 7px; top: 10px; bottom: 10px;
+  width: 3px;
+  border-radius: 3px;
+  background: linear-gradient(180deg, var(--accent), transparent);
+  opacity: .45;
+}
+.session-card {
+  display: block;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+}
+.session-card::before {
+  content: "";
+  position: absolute;
+  left: -21px; top: 20px;
+  width: 13px; height: 13px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #b8f5dc, var(--accent-2) 55%, var(--accent));
+  box-shadow: 0 0 0 3px var(--bg-top), 0 0 10px var(--accent);
+}
+.session-card > span { font-size: 13px; color: var(--accent); font-weight: 800; }
+.session-card b { display: block; font-size: 16px; margin: 2px 0; }
+.session-card p { margin: 4px 0; color: var(--muted); font-size: 14px; }
+.session-card ul { font-size: 14px; margin-top: 6px; }
+
+/* ---------------------------------------------------------------------
+   文字起こし（話者ごとに色の付いた玉のアイコン）
+   --------------------------------------------------------------------- */
+.transcript-session {
+  position: sticky;
+  /* 上に貼り付くセグメント（高さ約58px + 上の余白8px）のすぐ下に付け、間から本文が透けないように */
+  top: calc(64px + env(safe-area-inset-top));
+  z-index: 4;
+  margin: 26px 0 10px;
+  padding: 8px 14px;
+  font-size: 15px;
+  font-weight: 800;
+  border-radius: 12px;
+  background: linear-gradient(180deg, var(--card), var(--card-2));
+  box-shadow: var(--shadow-1), inset 0 1px 0 var(--highlight);
+}
+.utterance {
+  display: flex;
+  gap: 12px;
+  padding: 12px 2px;
+  border-bottom: 1px solid var(--line);
+  /* 1日で数百発話ある。画面の外の発話は描かないようにして、スクロールを軽くする */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 110px;
+}
+.avatar {
+  --hue: 160;
+  flex: 0 0 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+  background: radial-gradient(circle at 32% 28%,
+              hsl(var(--hue) 75% 78%) 0%, hsl(var(--hue) 60% 52%) 45%, hsl(var(--hue) 65% 32%) 100%);
+  box-shadow: 0 3px 8px hsl(var(--hue) 60% 30% / .35), inset 0 -2px 4px rgba(0, 0, 0, 0.18);
+}
+.utterance b { font-size: 14px; }
+.utterance time { margin-left: 8px; color: var(--muted); font-size: 12px; }
+.utterance p { margin: 3px 0 0; font-size: 16px; line-height: 1.7; white-space: pre-wrap; }
+
+/* ---------------------------------------------------------------------
+   マインドマップ
+   --------------------------------------------------------------------- */
+.mindmap-tree { padding: 8px 14px; }
+.mind-node {
+  padding: 9px 0 9px calc(var(--depth) * 16px);
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+}
+.mind-node:last-child { border-bottom: 0; }
+.mind-node summary { list-style: none; }
+.mind-node summary::-webkit-details-marker { display: none; }
+.mind-node summary::before {
+  content: "";
+  display: inline-block;
+  width: 8px; height: 8px;
+  margin-right: 9px;
+  border-radius: 50%;
+  vertical-align: 2px;
+  background: radial-gradient(circle at 35% 30%, #b8f5dc, var(--accent));
+  box-shadow: 0 0 6px var(--accent);
+}
+.mind-node[style*="--depth:0"] { font-weight: 800; font-size: 16px; }
+
+/* ---------------------------------------------------------------------
+   タスク・人物・その他
+   --------------------------------------------------------------------- */
+.task-card { padding: 18px; margin-bottom: 14px; }
+.task-card h2, .person-card h2 { font-size: 17px; line-height: 1.4; margin: 0; font-weight: 800; }
+.task-head p, .person-card p { color: var(--muted); font-size: 14px; margin: 4px 0 0; }
+.task-card > p { font-size: 15px; margin: 8px 0; }
+.due { color: var(--accent); font-size: 14px; font-weight: 700; margin: 10px 0; }
+
+/* 状態の札。色付きの小さなキーキャップ */
+.status {
+  flex: none;
+  font-size: 13px;
+  font-weight: 800;
+  padding: 5px 11px;
+  border-radius: 10px;
+  color: #fff;
+  --st: #7d8a85;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--st) 80%, #fff), var(--st));
+  box-shadow: 0 2px 6px color-mix(in srgb, var(--st) 40%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.status.st-todo     { --st: #6f7d78; }
+.status.st-review   { --st: #c98a12; }
+.status.st-doing    { --st: #2f73c9; }
+.status.st-done     { --st: #1f8a67; }
+.status.st-hold     { --st: #7a6fa8; }
+.status.st-rejected { --st: #a4574f; }
+
+.person-card {
+  align-items: center;
+  min-height: 76px;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+}
+.person-meta { text-align: right; flex: none; }
+.person-meta b { display: block; font-size: 15px; }
+.person-meta span { display: block; color: var(--muted); font-size: 12px; }
+
+.more-row {
+  align-items: center;
+  min-height: 64px;
+  padding: 0 18px;
+  margin-bottom: 12px;
+  font-size: 17px;
+  font-weight: 800;
+}
+.more-row span { color: var(--muted); font-size: 14px; font-weight: 600; }
+
+.memo { padding: 14px 18px; margin-bottom: 16px; }
+.memo summary { min-height: 34px; font-weight: 800; }
+.memo p { white-space: pre-line; font-size: 15px; }
+
+.read-card { padding: 20px; line-height: 1.85; font-size: 16px; }
+.markdown h2 { font-size: 20px; margin: 22px 0 8px; }
+.markdown h3 { font-size: 17px; margin: 18px 0 6px; }
+.markdown h4 { font-size: 16px; margin: 14px 0 4px; }
+.markdown h2:first-child { margin-top: 0; }
+.markdown ul { padding-left: 20px; }
+.markdown li { margin: 6px 0; }
+.markdown p { margin: 8px 0; }
+
+/* Notionで開く: 押せるボタンとして浮かせる */
+.notion-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 46px;
+  margin-top: 10px;
+  padding: 0 16px;
+  border-radius: 13px;
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--card), var(--card-2));
+  box-shadow: var(--shadow-1), inset 0 1px 0 var(--highlight);
+}
+
+.empty { text-align: center; color: var(--muted); padding: 36px 12px; font-size: 15px; }
+
+/* ---------------------------------------------------------------------
+   下部ナビ: 画面から浮いたガラスの板。選んだものは持ち上がったキー
+   --------------------------------------------------------------------- */
+.bottom-nav {
+  position: fixed;
+  z-index: 10;
+  left: 50%;
+  bottom: calc(12px + env(safe-area-inset-bottom));
+  transform: translateX(-50%);
+  width: min(calc(100% - 24px), 560px);
+  display: flex;
+  gap: 4px;
+  padding: 6px;
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--card) 78%, transparent);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+  backdrop-filter: blur(18px) saturate(1.4);
+  box-shadow: var(--shadow-3), inset 0 1px 0 var(--highlight);
+}
+.bottom-nav button {
+  flex: 1;
+  min-height: 56px;
+  border: 0;
+  border-radius: 18px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+.bottom-nav span { display: block; font-size: 21px; line-height: 24px; }
+.bottom-nav button.active {
+  color: var(--accent-ink);
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 45%, transparent),
+              inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+/* ---------------------------------------------------------------------
+   合言葉の画面
+   --------------------------------------------------------------------- */
+.lock {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background:
+    radial-gradient(90% 60% at 50% 0%, var(--accent-soft), transparent 65%),
+    linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+}
+.lock-card {
+  width: min(100%, 370px);
+  padding: 30px 24px 22px;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: 26px;
+  background: linear-gradient(180deg, var(--card), var(--card-2));
+  box-shadow: var(--shadow-3), inset 0 1px 0 var(--highlight);
+}
+.lock-card .record-dot { width: 16px; height: 16px; margin: 0 auto 6px; display: block; }
+.lock-card h1 { font-size: 23px; margin: 8px 0; }
+.lock-card p { font-size: 14px; color: var(--muted); }
+.kicker { font-size: 11px !important; letter-spacing: .14em; font-weight: 800; }
+.lock-card input {
+  width: 100%;
+  height: 54px;
+  margin: 12px 0;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: var(--sunken);
+  box-shadow: var(--inset);
+  color: var(--ink);
+  font-size: 16px;
+}
+.primary {
+  width: 100%;
+  height: 54px;
+  border: 0;
+  border-radius: 15px;
+  color: var(--accent-ink);
+  font-size: 16px;
+  font-weight: 800;
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  box-shadow: 0 6px 16px color-mix(in srgb, var(--accent) 45%, transparent),
+              inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+.error { color: var(--danger) !important; min-height: 20px; }
+
+/* ---------------------------------------------------------------------
+   下から出るシート（検索・絞り込み・設定）
+   --------------------------------------------------------------------- */
+.sheet-back {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  background: rgba(3, 10, 8, 0.45);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s;
+}
+.sheet-back.show { opacity: 1; pointer-events: auto; }
+.sheet {
+  position: fixed;
+  z-index: 21;
+  left: 50%;
+  bottom: 0;
+  width: min(100%, 600px);
+  max-height: 78vh;
+  overflow: auto;
+  padding: 22px 16px calc(22px + env(safe-area-inset-bottom));
+  border-radius: 26px 26px 0 0;
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--card), var(--card-2));
+  box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.25), inset 0 1px 0 var(--highlight);
+  transform: translate(-50%, 110%);
+  transition: transform .24s cubic-bezier(.2, .8, .2, 1);
+}
+.sheet.show { transform: translate(-50%, 0); }
+.sheet::before {  /* つまみ */
+  content: "";
+  display: block;
+  width: 42px; height: 5px;
+  margin: -8px auto 14px;
+  border-radius: 5px;
+  background: var(--sunken);
+  box-shadow: var(--inset);
+}
+.sheet h2 { font-size: 19px; margin: 0 0 12px; }
+.sheet input {
+  width: 100%;
+  height: 54px;
+  margin-bottom: 12px;
+  padding: 0 16px;
+  border: 1px solid var(--line);
+  border-radius: 15px;
+  background: var(--sunken);
+  box-shadow: var(--inset);
+  color: var(--ink);
+  font-size: 16px;
+}
+.sheet-choice, .danger {
+  display: block;
+  width: 100%;
+  min-height: 52px;
+  margin: 6px 0;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 14px;
+  text-align: left;
+  background: transparent;
+  color: var(--ink);
+  font-size: 16px;
+}
+.sheet-choice.selected {
+  font-weight: 800;
+  color: var(--accent-ink);
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 35%, transparent),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.danger {
+  margin-top: 16px;
+  color: var(--danger);
+  border: 1px solid color-mix(in srgb, var(--danger) 50%, transparent);
+  background: linear-gradient(180deg, var(--card), var(--card-2));
+  box-shadow: var(--shadow-1), inset 0 1px 0 var(--highlight);
+}
+.result {
+  display: block;
+  padding: 12px 6px;
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.result b, .result span { display: block; }
+.result b { font-size: 15px; }
+.result span { font-size: 13px; color: var(--muted); margin-top: 3px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+/* ---------------------------------------------------------------------
+   小さい画面・動きを減らしたい設定
+   --------------------------------------------------------------------- */
+@media (max-width: 375px) {
+  .app { padding-left: 12px; padding-right: 12px; }
+  .page-title h1 { font-size: 25px; }
+  .attention h2 { font-size: 36px; }
+  .bottom-nav button { font-size: 11px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
