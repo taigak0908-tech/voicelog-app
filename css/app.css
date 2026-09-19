@@ -285,6 +285,32 @@ button { cursor: pointer; }
   box-shadow: 0 2px 6px rgba(200, 68, 59, 0.35);
 }
 .calm { color: var(--muted); font-size: 14px; margin: 12px 0 0; }
+
+/* 夜間処理が止まっているときの警告。いちばん目立つ位置に赤い面で出す */
+.alert {
+  position: relative;
+  padding: 16px 18px 16px 22px;
+  margin-bottom: 16px;
+  border: 1px solid color-mix(in srgb, var(--danger) 45%, transparent);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(90% 120% at 100% 0%, color-mix(in srgb, var(--danger) 18%, transparent) 0%, transparent 55%),
+    linear-gradient(180deg, var(--card), var(--card-2));
+  box-shadow: 0 8px 24px color-mix(in srgb, var(--danger) 22%, transparent), inset 0 1px 0 var(--highlight);
+  overflow: hidden;
+}
+.alert::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 14px; bottom: 14px;
+  width: 5px;
+  border-radius: 0 5px 5px 0;
+  background: linear-gradient(180deg, #ff8a80, var(--danger));
+  box-shadow: 0 0 12px var(--danger);
+}
+.alert .eyebrow { color: var(--danger); }
+.alert h2 { font-size: 17px; line-height: 1.4; margin: 4px 0 6px; }
+.alert > p { font-size: 13px; color: var(--muted); margin: 4px 0 0; word-break: break-word; }
 .attention .text-button { margin: 0; }
 
 /* ---------------------------------------------------------------------
