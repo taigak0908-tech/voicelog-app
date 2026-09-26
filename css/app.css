@@ -838,6 +838,81 @@ blockquote {
   .bottom-nav button { font-size: 11px; }
 }
 
+/* ----------------------------------------------------------------------
+   議事録: 種類の札で見分け、押すと議題ごとの経緯に入る
+   --------------------------------------------------------------------- */
+.meeting-card.list {
+  display: block;
+  width: 100%;
+  text-align: left;
+  color: var(--ink);
+  padding: 16px 18px;
+  margin: 0 0 12px;
+  transition: transform .14s ease, box-shadow .14s ease;
+}
+.meeting-card.list:active { transform: translateY(2px) scale(0.985); box-shadow: var(--shadow-press); }
+.meeting-card.list b { display: block; font-size: 17px; line-height: 1.4; margin-top: 8px; }
+.meeting-card.list p { font-size: 14px; margin: 6px 0 0; }
+.meeting-head { display: flex; align-items: center; gap: 10px; }
+.meeting-head .muted { font-size: 13px; margin: 0; }
+.kind-badge {
+  display: inline-block;
+  flex: none;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 9px;
+  color: #fff;
+  --kind: #6f7d78;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--kind) 80%, #fff), var(--kind));
+  box-shadow: 0 2px 6px color-mix(in srgb, var(--kind) 40%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+.kind-badge.kind-morning  { --kind: #c98a12; }
+.kind-badge.kind-training { --kind: #2f73c9; }
+.kind-badge.kind-meeting  { --kind: #1f8a67; }
+.kind-badge.kind-talk     { --kind: #7a6fa8; }
+.kind-badge.kind-sales    { --kind: #a4574f; }
+.page-title .kind-badge { margin-bottom: 8px; }
+
+.chip-row { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 16px; }
+.chip {
+  font-size: 13px;
+  font-weight: 800;
+  padding: 8px 13px;
+  border-radius: 12px;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  background: linear-gradient(180deg, var(--card), var(--sunken));
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), inset 0 1px 0 var(--highlight);
+}
+.chip.selected {
+  color: var(--accent-ink);
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  border-color: transparent;
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 40%, transparent), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.agenda-item {
+  position: relative;
+  padding: 12px 14px 12px 18px;
+  margin: 10px 0;
+  border-radius: 14px;
+  background: var(--sunken);
+  box-shadow: var(--inset);
+}
+.agenda-item::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 10px; bottom: 10px;
+  width: 4px;
+  border-radius: 4px;
+  background: var(--accent);
+}
+.agenda-item b { font-size: 15px; line-height: 1.45; }
+.agenda-item p { font-size: 14px; margin: 6px 0 0; line-height: 1.7; }
+.agenda-item .conclusion { color: var(--ink); font-weight: 700; }
+.chips.attendees { margin: -6px 0 16px; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
