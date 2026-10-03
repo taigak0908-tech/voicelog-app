@@ -913,6 +913,21 @@ blockquote {
 .agenda-item .conclusion { color: var(--ink); font-weight: 700; }
 .chips.attendees { margin: -6px 0 16px; }
 
+/* 作業カメラのコマ: 会話カードの下に横並びで数枚 */
+.frame-strip { display: flex; gap: 6px; margin: 10px 0 0; overflow-x: auto; }
+.frame-strip img {
+  flex: none;
+  width: 96px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+.scene-note { color: var(--muted); font-size: 13px; margin: 6px 0 0; }
+.session-card > span small { display: block; font-size: 11px; color: var(--muted); font-weight: 600; }
+.meeting-card.material p { white-space: pre-line; max-height: 9em; overflow: hidden; }
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
